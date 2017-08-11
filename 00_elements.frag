@@ -74,7 +74,7 @@ float hexSDF(vec2 st) {
 // 28
 float starSDF(vec2 st, int V, float s) {
     st = st * 4. - 2.;
-    float a = atan(st., st.x) / TAU;
+    float a = atan(st.y, st.x) / TAU;
     float seg = a * float(V);
     a = ((floor(seg) + 0.5) / float(V) + mix(s, -s, step(.5, fract(seg)))) * TAU;
     return abs(dot(vec2(cos(a), sin(a)), st));
