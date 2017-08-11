@@ -114,6 +114,7 @@ float spiralSDF(vec2 st, float t) {
 void main() {
     vec3 color = vec3(0.);
     vec2 st = gl_FragCoord.xy / u_resolution;
+    st = scale(st, vec2(1.5, 1.5));
     st = rotate(st, radians(-60.));
     st.y = flip(st.y, step(.5, st.x));
     st.y += .25;
