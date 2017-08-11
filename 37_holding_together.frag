@@ -44,16 +44,14 @@ vec3 bridge(vec3 c, float d, float s, float w) {
 void main() {
     vec3 color = vec3(0.);
     vec2 st = gl_FragCoord.xy / u_resolution;
-    st = st.yx;
     st.x = mix(1. - st.x, st.x, step(.5, st.y));
-    vec2 o = vec2(.1, .0);
+    vec2 o = vec2(.05, .0);
     vec2 s = vec2(1.);
     float a = radians(45.);
     float l = rectSDF(rotate(st + o, a), s);
     float r = rectSDF(rotate(st - o, -a), s);
-    color += stroke(1., .3, .1);
-    color = bridge(color, r, .3, .1);
-    color = bridge(color, l, .3, .1);
-    color += fill(rhombSDF(abs(st.yx - vec2(.0, .5))), .1);
+    color += stroke(1., .145, .098);
+    color = bridge(color, l, .145, .098);
+    color = bridge(color, r, .145, .098);
     gl_FragColor = vec4(color, 1.);
 }

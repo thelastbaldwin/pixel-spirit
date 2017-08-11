@@ -114,6 +114,13 @@ float spiralSDF(vec2 st, float t) {
 void main() {
     vec3 color = vec3(0.);
     vec2 st = gl_FragCoord.xy / u_resolution;
-
+    st = rotate(st, radians(-60.));
+    st.y = flip(st.y, step(.5, st.x));
+    st.y += .25;
+    float down = polySDF(st, 3);
+    st.y = 1.5 - st.y;
+    float top = polySDF(st, 3);
+    color += stroke(top, .4, .15);
+    color = bridge(color, down, .4, .15);
     gl_FragColor = vec4(color, 1.);
 }
