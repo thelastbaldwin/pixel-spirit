@@ -26,20 +26,15 @@ float rectSDF(vec2 st, vec2 s){
     return max( abs(st.x / s.x), abs(st.y / s.y) );
 }
 // 11
-float rectSDF(vec2 st, vec2 s){
-    st = st * 2. - 1.;
-    return max( abs(st.x / s.x), abs(st.y / s.y) );
-}
-// 12
 float crossSDF(vec2 st, float s){
     vec2 size = vec2(.25, s);
     return min( rectSDF(st, size.xy), rectSDF(st, size.yx) );
 }
-// 14
+// 12
 float flip(float v, float pct){
     return mix(v, 1. - v, pct);
 }
-// 15
+// 14
 float vesicaSDF(vec2 st, float w){
     vec2 offset = vec2(w * .5, 0.);
     return max(circleSDF(st - offset), circleSDF(st + offset));
